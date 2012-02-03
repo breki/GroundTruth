@@ -1,0 +1,634 @@
+﻿{{GroundTruthRenderingRules | description=for hiking maps 
+| version=1.6
+| changepolicy=Feel free to modify or add new rules to this page if you find stuff that's relevant to hiking.}}
+
+== Rendering Rules ==
+
+=== Options ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="2" 
+|- style="background-color:#F8F4C2"
+! Option
+! Value
+! Comment 
+|-
+| RulesVersion || 1.6 || Minimal version of [[GroundTruth]] needed to use these rules
+|-
+| LandBackgroundColor || #FFEFBF || Color of the map background. If not set, the default unit color will be used
+|-
+| SeaColor || #7EC9FF || Color of the sea polygons.
+|-
+| ForceBackgroundColor || true || Forces showing of custom the map background color
+|-
+|}
+
+=== Areas ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:100px" | Label
+! style="width:40px" | Colors
+! style="width:300px" | Pattern
+|-
+| Land || {{tag|natural|land}} || 18 || || Land || "land" || {{GroundTruthAreaColor|#ffffff}}
+|-
+| Marsh
+| {{tag|natural|marsh}} or {{tag|waterway|wetland}}
+| 18
+|
+| Wetland
+| "marsh"
+| {{GroundTruthAreaColor|#218CFF}}
+| 00000000000000000000000000000000
+11110000111100001111000011110000
+00000000000000000000000000000000
+00001111000011110000111100001111
+|-
+| Forest 
+| {{tag|landuse|forest}} or {{tag|natural|wood}} 
+| 18
+|
+| Woods
+| "forest"
+| {{GroundTruthAreaColor|#92CE67}}
+|-
+| Park
+| {{tag|leisure|park}}
+| 18
+|
+| 
+| "park"
+| {{GroundTruthAreaColor|#92EE67}}
+|-
+| Farm
+| {{tag|landuse|farm}} or {{tag|landuse|farmland}}
+| 18
+|
+| 
+| "farm"
+| {{GroundTruthAreaColor|#D88249}}
+|-
+| Farmyard
+| {{tag|landuse|farmyard}}
+| 18
+|
+| 
+| "farmyard"
+| {{GroundTruthAreaColor|#808000}}
+|-
+| Fell
+| {{tag|natural|fell}}
+| 18
+|
+| 
+| "fell"
+| {{GroundTruthAreaColor|#83FF00}}
+|-
+| Residential
+| {{tag|landuse|residential}}
+| 18
+|
+| City
+| "residential"
+| {{GroundTruthAreaColor|#D4D4D4}}
+|-
+| Water
+| {{tag|waterway|riverbank}} or {{tag|waterway|river}} or {{tag|natural|water}}
+| 18
+|
+| River
+| "water"
+| {{GroundTruthAreaColor|#7EC9FF}}
+|-
+| Sea || {{tag|natural|sea}} || 18 || || Sea || "sea" || {{GroundTruthAreaColor|#000060}}
+|}
+
+=== Lines ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0"
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:100px" | Label
+! style="width:40px" | Colors
+! style="width:20px" | Width
+! style="width:20px" | Border Width
+! Pattern
+|-
+| Coastline
+| {{tag|natural|coastline}}
+| 12
+|
+| Shoreline
+| "coastline"
+| {{GroundTruthLineColor|#5B8FFF}}
+| 2
+|
+|
+|-
+| PathMinor
+| ({{tag|highway|footway}} or {{tag|highway|path}} or {{tag|highway|cycleway}})
+and ({{tag|trail_visibility|no}} or {{tag|trail_visibility|horrible}} or {{tag|trail_visibility|bad}})
+| 23
+|
+|
+| "minor path"
+| {{GroundTruthLineColor|#FF0000}}
+|
+|
+| 11111000
+11111000
+|-
+| PathMajor
+| ({{tag|highway|footway}} or {{tag|highway|path}} or {{tag|highway|cycleway}})
+and not ({{tag|trail_visibility|no}} or {{tag|trail_visibility|horrible}} or {{tag|trail_visibility|bad}})
+| 22
+|
+| Trail
+| "path"
+| {{GroundTruthLineColor|#FF0000}}
+| 2
+|
+|
+|-
+| TrackMajor
+| {{tag|highway|track}} and ({{tag|tracktype|grade1}} or {{tag|tracktype|grade2}} or not {{tag|tracktype}})
+| 21
+|
+| Unpaved Road-thin
+| "major track"
+| {{GroundTruthLineColor|#808080}}
+| 2
+|
+|
+|-
+| TrackMinor
+| {{tag|highway|track}} and ({{tag|tracktype|grade3}} or {{tag|tracktype|grade4}} or {{tag|tracktype|grade5}})
+| 22
+|
+|
+| "minor track"
+| {{GroundTruthLineColor|#808080}}
+|
+|
+| 11111000
+11111000
+|-
+| Trailblazed
+| {{tag|trailblazed|yes}}
+| 22
+|
+|
+| "marked path"
+| {{GroundTruthLineColor|#FFFFFF}}
+|
+|
+|
+1100
+1100
+0000
+0000
+1100
+1100
+|-
+| RoadHighZoom
+| {{tag|highway|primary}} or {{tag|highway|primary_link}}
+or {{tag|highway|secondary}} or {{tag|highway|secondary_link}} or {{tag|highway|tertiary}}
+or {{tag|highway|motorway}} or {{tag|highway|motorway_link}}
+or {{tag|highway|trunk}} or {{tag|highway|trunk_link}}
+or {{tag|highway|unclassified}} or {{tag|highway|unpaved}} 
+or {{tag|highway|residential}} or {{tag|highway|service}}
+or {{tag|highway|road}} or {{tag|highway|living_street}}
+| 22
+|
+|
+| "road"
+| {{GroundTruthLineColor|#0718FF}}
+| 2
+|
+|-
+| RoadMiddleZoom
+| {{tag|highway|primary}} or {{tag|highway|primary_link}} 
+or {{tag|highway|secondary}} or {{tag|highway|secondary_link}} or {{tag|highway|tertiary}} 
+or {{tag|highway|motorway}} or {{tag|highway|motorway_link}} 
+or {{tag|highway|trunk}} or {{tag|highway|trunk_link}} 
+or {{tag|highway|unclassified}} or {{tag|highway|unpaved}} 
+or {{tag|highway|residential}} or {{tag|highway|service}}
+or {{tag|highway|road}} or {{tag|highway|living_street}}
+| 19
+| 21
+|
+| "road"
+| {{GroundTruthLineColor|#0718FF}}
+| 1
+|
+|-
+| RoadLowZoom
+| {{tag|highway|primary}} or {{tag|highway|secondary}} or {{tag|highway|motorway}} or {{tag|highway|trunk}}
+|
+| 18
+|
+| "road"
+| {{GroundTruthLineColor|#0718FF}}
+| 1
+|
+|-
+| Railway
+| {{tag|railway|rail}}
+| 19
+|
+| Railroad
+| "railway"
+| {{GroundTruthLineColor|#000000}}
+|
+|
+|
+1111111111111111
+1111111000000000
+1111111111111111
+|-
+| CableCar
+| {{tag|aerialway|cable_car}}
+| 21
+|
+|
+| "cable car"
+| {{GroundTruthLineColor|#000000}}
+|
+|
+| 1100
+1100
+|-
+| AerialwaysMinor
+| {{tag|aerialway|chair_lift}} or {{tag|aerialway|drag_lift}}
+| 22
+|
+|
+| "aerialway"
+| {{GroundTruthLineColor|#000000}}
+|
+|
+| 1100
+1100
+|-
+| River
+| {{tag|waterway|river}}
+| 12
+|
+| River
+| "river"
+| {{GroundTruthLineColor|#3ABAFF}}
+| 2
+|
+|-
+| Stream
+| {{tag|waterway|stream}}
+| 22
+|
+| Stream-thin
+| "stream"
+| {{GroundTruthLineColor|#3ABAFF}}
+| 2
+|
+|-
+| Fence
+| {{tag|barrier|fence}}
+| 24
+|
+|
+| "fence"
+| {{GroundTruthLineColor|#8E4000}}
+| 1
+|
+|-
+| Ditch
+| {{tag|barrier|ditch}}
+| 24
+|
+|
+| "ditch"
+| {{GroundTruthLineColor|#7F3300}}
+|
+|
+|
+1111
+1000
+1000
+1000
+|-
+| PowerLine
+| {{tag|power|line}}
+| 23
+|
+| Power line
+| "power line"
+| {{GroundTruthLineColor|#000000}}
+| 1
+|
+|-
+| NationalBorder
+| {{tag|boundary|administrative}} {{tag|admin_level|2}}
+| 12
+|
+| Intl. Boundary
+| "border"
+| {{GroundTruthLineColor|#000000}}
+|
+|
+| 1111001100111100
+1111001100111100
+|-
+| NationalPark
+| {{tag|boundary|national_park}}
+| 12
+|
+|
+| "nat. park"
+| {{GroundTruthLineColor|#026102}}
+|
+|
+| 1111001100111100
+1111001100111100
+|}
+
+=== Points ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:200px" | Label
+! style="width:40px" | Icon
+|-
+| City || {{tag|place|city}} || 20 || || City (Large) || name 
+|-
+| Town || {{tag|place|town}} || 21 || || City (Medium) || name
+|-
+| Village || {{tag|place|village}} or {{tag|place|hamlet}} || 22 || || City (Small) || name
+|-
+| Locality || {{tag|place|locality}} || 21 || || Region name (no Point, middle) || name
+|-
+| PlaceOfWorship || {{tag|amenity|place_of_worship}} || 22 || || Church || name
+|-
+| Peak || {{tag|natural|peak}} || 21 || || Summit || name ++ ele "$1f$elevation" || [[#IconPeak]]
+|-
+| ParkingNode || {{tag|amenity|parking}} || 22 || || Parking Area 
+|-
+| Quarry || {{tag|landuse|quarry}} || 22 || || Mine || name
+|-
+| Hotel/Motel || {{tag|tourism|hotel}} or {{tag|tourism|hostel}} || 22 || || Hotel/Motel || name
+|-
+| Restaurant|| {{tag|amenity|restaurant}} || 22 || || Restaurant || name
+|-
+| TourismInformation || {{tag|tourism|information}} and not {{tag|information|guidepost}} || 23 || || Information
+|-
+| Guidepost || {{tag|tourism|information}} and {{tag|information|guidepost}} || 23 || || || name || [[#IconGuidepost]]
+|-
+| HuntingStand || {{tag|amenity|hunting_stand}} || 24 || || || || "hunting stand" [[#IconHuntingStand]]
+|-
+| GuestHouse || {{tag|tourism|guest_house}} || 22 || || Bed & Breakfast inn || name 
+|-
+| Shelter || {{tag|amenity|shelter}} || 22 || || || name || [[#IconShelter]]
+|-
+| Bench || {{tag|amenity|bench}} || 23 || || Bench || "bench" || [[#IconBench]]
+|-
+| Ruins || {{tag|historic|ruins}} or {{tag|historic|archaeological_site}} || 22 || || || name || [[#IconRuins]]
+|-
+| Viewpoint || {{tag|tourism|viewpoint}} || 22 || || || name || [[#IconViewpoint]]
+|-
+| WaterTower || {{tag|man_made|water_tower}} || 22 || || || || [[#IconWaterTower]]
+|-
+| DrinkingWater || {{tag|amenity|drinking_water}} || 22 || || Drinking Water || name || [[#IconDrinkingWater]]
+|-
+| TodoContinue || {{tag|todo|continue}} || 23 || || || "to do: continue" || [[#IconTodoContinue]] 
+|-
+| TodoJunction || {{tag|todo|junction}} || 23 || || || "to do: junction" || [[#IconTodoJunction]] 
+|}
+
+== Patterns ==
+=== IconPeak ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|}
+
+0001000<br/>
+0011100<br/>
+0111110<br/>
+1111111<br/>
+1111111<br/>
+
+=== IconShelter ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|}
+
+000010000<br/>
+000101000<br/>
+001000100<br/>
+010000010<br/>
+101000101<br/>
+001000100<br/>
+001000100<br/>
+001000100<br/>
+
+=== IconBench ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|-
+| 2 || {{GroundTruthAreaColor|#b0b0b0}}
+|}
+
+2222222222<br/>
+2111111112<br/>
+0212002120<br/>
+0212002120<br/>
+0222002220<br/>
+
+=== IconRuins ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|}
+
+111000<br/>
+111000<br/>
+111000<br/>
+111111<br/>
+111111<br/>
+
+=== IconWaterTower ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|}
+
+111111<br/>
+111111<br/>
+011110<br/>
+001100<br/>
+001100<br/>
+001100<br/>
+001100<br/>
+001100<br/>
+001100<br/>
+001100<br/>
+
+=== IconViewpoint ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#F00000}}
+|}
+
+00000011000000<br/>
+00000011000000<br/>
+00110011001100<br/>
+00111011011100<br/>
+00011011011000<br/>
+00000000000000<br/>
+11111011011111<br/>
+11111011011111<br/>
+00000000000000<br/>
+00011011011000<br/>
+00111011011100<br/>
+00110011001100<br/>
+00000011000000<br/>
+00000011000000<br/>
+
+=== IconDrinkingWater ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#1030f1}}
+|}
+
+000000000<br/>
+111111000<br/>
+000011000<br/>
+000011000<br/>
+000111100<br/>
+000000000<br/>
+000011000<br/>
+000000000<br/>
+010011001<br/>
+010000001<br/>
+011111111<br/>
+
+=== IconGuidepost ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#ffffff}}
+|-
+| 2 || {{GroundTruthAreaColor|#000000}}
+|-
+| 3 || {{GroundTruthAreaColor|#0026FF}}
+|}
+
+00333333333333<br/>
+33111111111113<br/>
+33111111111113<br/>
+00333333333333<br/>
+00000022200000<br/>
+00000022200000<br/>
+03333333333300<br/>
+03111111111133<br/>
+03111111111133<br/>
+03333333333300<br/>
+00000022200000<br/>
+00000022200000<br/>
+00000022200000<br/>
+00000022200000<br/>
+
+=== IconHuntingStand ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#000000}}
+|-
+| 2 || {{GroundTruthAreaColor|#7F3300}}
+|}
+
+00022<br/>
+02222<br/>
+22222<br/>
+22222<br/>
+22222<br/>
+22222<br/>
+10001<br/>
+01010<br/>
+00100<br/>
+01010<br/>
+10001<br/>
+
+=== IconTodoJunction ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#720065}}
+|-
+| 2 || {{GroundTruthAreaColor|#b0b0b0}}
+|}
+
+222202222<br/>
+211202112<br/>
+211121112<br/>
+221111122<br/>
+022111220<br/>
+221111122<br/>
+211121112<br/>
+211202112<br/>
+222202222<br/>
+
+=== IconTodoContinue ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:75px" | Color ID
+! style="width:75px" | Color
+|-
+| 1 || {{GroundTruthAreaColor|#720065}}
+|}
+
+00100<br/>
+01110<br/>
+11111<br/>
+01110<br/>
+00100<br/>
+
+[[Category:GroundTruth]]
+[[Category:GroundTruth Rules]]

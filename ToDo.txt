@@ -1,0 +1,37 @@
+current version:
+----------------
+- TODO: fix .reg files issue for 64bit OS
+- update rules on the wiki
+
+- StyleCop
+- relations support like Kosmos?
+- cropping OSM data (using osmosis)?
+- splitting OSM data into multiple smaller areas (using osmosis)?
+
+next version
+------------
+- SRTM1 support
+- add newest rules & co from the wiki
+- "layer 0 of the map cannot be empty"
+	- each contours map should have its own zoom levels defined
+
+future:
+-------------
+- add coastline support
+	- how to add download boundaries?
+- investigate layering
+- add map options as part of rules
+- add verbosity option
+- make max. program running configurable
+- support for math. expressions in selectors
+- implementing http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
+- implement real levels for preview maps
+- layers support - we should extend rendering rules to specify which layer each rule belongs to
+	- how to add relief contours into this?
+- implementing patterns reference in rules
+	- implement reference from other pages / files
+- POI: support for bitmaps
+- add rules:
+	- vinotoc
+	- mountain hut
+	- naravna znamenitost

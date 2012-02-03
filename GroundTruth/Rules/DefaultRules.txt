@@ -1,0 +1,280 @@
+﻿[[GroundTruth]] rendering rules for driving maps.
+
+{{GroundTruthRenderingRules | description=for driving maps 
+| version=1.6
+| changepolicy=Feel free to modify or add new rules to this page if you find stuff that's relevant to driving.}}
+
+== Rendering Rules ==
+
+=== Options ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="2" 
+|- style="background-color:#F8F4C2"
+! Option
+! Value
+! Comment 
+|-
+| RulesVersion || 1.6 || Minimal version of [[GroundTruth]] needed to use these rules
+|-
+| LandBackgroundColor || #FFEFBF || Color of the map background. If not set, the default unit color will be used
+|-
+| SeaColor || #7EC9FF || Color of the sea polygons.
+|-
+| ForceBackgroundColor || true || Forces showing of custom the map background color
+|-
+|}
+
+=== Areas ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:100px" | Label
+! style="width:40px" | Colors
+! style="width:300px" | Pattern
+|-
+| Land || {{tag|natural|land}} || 18 || || Land || "land" || {{GroundTruthAreaColor|#ffffff}}
+|-
+| Forest 
+| {{tag|landuse|forest}} or {{tag|natural|wood}} 
+| 18
+|
+| Woods
+| "forest"
+| {{GroundTruthAreaColor|#92CE67}}
+|-
+| Residential
+| {{tag|landuse|residential}}
+| 18
+|
+| City
+| "residential"
+| {{GroundTruthAreaColor|#D4D4D4}}
+|-
+| Water
+| {{tag|waterway|riverbank}} or {{tag|waterway|river}} or {{tag|natural|water}}
+| 18
+|
+| River
+| "water"
+| {{GroundTruthAreaColor|#7EC9FF}}
+|-
+| Sea || {{tag|natural|sea}} || 18 || || Sea || "sea" || {{GroundTruthAreaColor|#000060}}
+|}
+
+=== Lines ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:100px" | Label
+! style="width:40px" | Colors
+! style="width:20px" | Width
+! style="width:20px" | Border Width
+! style="width:100px" | Pattern
+|-
+| Coastline
+| {{tag|natural|coastline}}
+| 12
+|
+| Shoreline
+| "coastline"
+| {{GroundTruthLineColor|#5B8FFF}}
+| 2
+|
+|-
+| ResidentialRoadHighZoom
+| {{tag|highway|residential}} or {{tag|highway|living_street}}  or {{tag|highway|service}}
+| 22
+|
+|  
+| name
+| {{GroundTruthLineColor|#ffffff}}
+| 2
+|
+|-
+| ResidentialRoadLowZoom
+| {{tag|highway|residential}}
+| 20
+| 21
+| 
+| "residential road"
+| {{GroundTruthLineColor|#ffffff}}
+| 1
+|
+|-
+| FootpathHighZoom
+| {{tag|highway|path}} or {{tag|highway|cycleway}} or {{tag|highway|footway}} or {{tag|highway|bridleway}} or {{tag|highway|pedestrian}}  or {{tag|highway|steps}}
+| 24
+|
+|  
+| name
+| {{GroundTruthLineColor|#ff7070}}
+| 1
+|
+|-
+| Motorway
+| {{tag|highway|motorway}}
+| 17
+|
+| Major HWY thick
+| ref "$04$uppercase"
+| {{GroundTruthLineColor|#7F9EB3}}
+| 4
+|
+|-
+| MotorwayLink
+| {{tag|highway|motorway_link}}
+| 20
+|
+| Major HWY Connector-thick
+| "motorway link"
+| {{GroundTruthLineColor|#7F9EB3}}
+| 2
+|
+|-
+| Trunk
+| {{tag|highway|trunk}}
+| 17
+|
+| Principal HWY-thick
+| "trunk"
+| {{GroundTruthLineColor|#AADAA6}}
+| 4
+|
+|-
+| TrunkLink
+| {{tag|highway|trunk_link}}
+| 20
+|
+| 
+| "trunk link"
+| {{GroundTruthLineColor|#AADAA6}}
+| 2
+|
+|-
+| PrimaryRoad
+| {{tag|highway|primary}}
+| 18
+|
+| Principal HWY-medium
+| "primary road"
+| {{GroundTruthLineColor|#E69C9B}}
+| 3
+|
+|-
+| PrimaryRoadLink
+| {{tag|highway|primary_link}}
+| 20
+|
+| 
+| "primary road link"
+| {{GroundTruthLineColor|#E69C9B}}
+| 2
+|
+|-
+| SecondaryRoad
+| {{tag|highway|secondary}}
+| 19
+|
+| Arterial Road-thick
+| "secondary road"
+| {{GroundTruthLineColor|#CE8240}}
+| 3
+|
+|-
+| TertiaryRoad
+| {{tag|highway|tertiary}}
+| 20
+|
+| Arterial Road-medium
+| "tertiary road"
+| {{GroundTruthLineColor|#CE8240}}
+| 2
+|
+|-
+| UnclassifiedRoad
+| {{tag|highway|unclassified}}
+| 21
+|
+| 
+| "unclassified road"
+| {{GroundTruthLineColor|#808080}} 
+| 2
+| 
+| 
+|-
+| Track
+| {{tag|highway|track}} and ({{tag|tracktype|grade1}} or {{tag|tracktype|grade2}} or not {{tag|tracktype}})
+| 22
+|
+| Unpaved Road-thin
+| "track"
+| {{GroundTruthLineColor|#808080}}
+| 
+|
+| 11111100
+11111100
+|-
+| Railway || {{tag|railway|rail}}|| 18 || || Railroad || "railway" || {{GroundTruthLineColor|#000000}} || 2 || 
+|-
+| River
+| {{tag|waterway|river}}
+| 12
+|
+| River
+| "river"
+| {{GroundTruthLineColor|#3ABAFF}}
+| 2
+|
+|-
+| Stream || {{tag|waterway|stream}}|| 22 || || Stream-thin || "stream" || {{GroundTruthLineColor|#3ABAFF}} || 2 ||
+|-
+| NationalBorder || {{tag|boundary|administrative}} {{tag|admin_level|2}} || 12 || || Intl. Boundary || "border" || {{GroundTruthLineColor|#000000}} || || || 1111001100111100
+1111001100111100
+|-
+| NationalPark || {{tag|boundary|national_park}} || 12 || || || "nat. park" || {{GroundTruthLineColor|#026102}} || || || 1111001100111100
+1111001100111100
+|}
+
+=== Points ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:100px" | Rule Name
+! style="width:200px" | Selector
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:200px" | Label
+! style="width:40px" | Icon
+|-
+| City || {{tag|place|city}} || 20 || || City (Large) || name 
+|-
+| Town || {{tag|place|town}} || 21 || || City (Medium) || name
+|-
+| Village || {{tag|place|village}} or {{tag|place|hamlet}} || 22 || || City (Small) || name
+|-
+| Locality || {{tag|place|locality}} || 21 || || Region name (no Point, middle) || name
+|-
+| PlaceOfWorship || {{tag|amenity|place_of_worship}} || 22 || || Place of Worship || name
+|-
+| ParkingNode || {{tag|amenity|parking}} || 22 || || Parking Area ||
+|-
+| MotorwayJunction || {{tag|highway|motorway_junction}} || 20 || || Exit || name ++ " " ++ ref
+|-
+| GuestHouse || {{tag|tourism|guest_house}} || 22 || || Bed & Breakfast inn || name
+|-
+| Fuel || {{tag|amenity|fuel}} || 22 || || Fuel/Gas || operator
+|-
+| Police || {{tag|amenity|police}} || 22 || || Police Station || "police station"
+|-
+| Hospital || {{tag|amenity|hospital}} || 22 || || Hospital || "hospital " ++ name
+|}
+
+[[Category:GroundTruth]]
+[[Category:GroundTruth Rules]]

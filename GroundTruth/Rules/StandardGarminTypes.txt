@@ -1,0 +1,344 @@
+﻿== Introduction ==
+This page contains tables for mapping Garmin map element type names into type ID's. It is used by [[GroundTruth]]'s rendering rules.
+
+==== Filling The Missing Data ====
+These tables currently hold only a small fraction of all available types. The idea is for any user of [[GroundTruth]] to help fill the missing types. Possible sources of information could be:
+* [http://ati.land.cz/gps/typdecomp/editor.cgi Online TYP Editor] - click on the '''Create''' tab and then start adding polygons, polylines and types. You can see the list of available Garmin types (with their ID's) in combo boxes. I'm not sure it has a complete list though. 
+* [[cgpsmapper]]'s mapping files
+* [[Mkgmap]]'s mapping files
+* Experimenting - simply use an undefined type ID, give it a name, and use it in your rules. Then check what your unit (or Mapsource) displays as a name for this type.
+
+==== Data Correctness ====
+Please make sure the information is '''correct'''. Also be careful not to enter erroneous stuff into tables, since it can cause [[GroundTruth]] to fail when parsing them - this will mean that you'll be making life difficult to other users.
+
+==== Sorting ====
+Also: please try to '''sort''' the mappings in '''alphabetical order''', to make things more readable.
+
+Thanks from GroundTruth's author!
+
+==== Definition room for Areas, Lines and POIs ====
+Areas and Lines don't matter. You can use anything what you want by adding a typfile. Only POI matter, because otherwise they show up in the wrong category for the search function.
+For lines you can use 0x00 (I think maybe cgpsmapper accepts no 0x00 but only 0x01 and up) to 0x2b (line types 0x2c to 0x3f are shown on gps unit, but not in Mapsource)- or use non standard types in RGN,2,3,4 of format 0x????? and give a definition for them in the typfile POI of 0x????? are however not searchable for. For areas you can use 0x00 to 0x3f AFAIK.~~
+: I'm not sure about lines not mattering, I think I read somewhere that only certain line types are used by Garmin for routing? --[[User:Breki|Breki]] 18:51, 27 January 2009 (UTC)
+:: Yip situation is different once it comes to routing. (I'ld suspect only 0x01 to 0x0a or 0x0b are routable. Oh 0x20-0x25 are reserved for contourlines and can't be used for other lines). Because of that, based on your use profile (i.e. on a mtb you don't want to route on highways or trunk roads) you should switch around a bit.--[[User:Extremecarver|Extremecarver]] 23:15, 27 January 2009 (UTC)
+::: According to cgpsmapper's RGNtype.txt: "Routable types are: 0x01 - 0x13, 0x16, 0x1a, 0x1b"  --[[User:FedericoCozzi|FedericoCozzi]] 07:31, 17 March 2009 (UTC)
+
+== Standard Garmin Types ==
+=== Points ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:250px" | Type Name
+! style="width:75px" | Type ID
+|-
+| Airport || 2F04
+|-
+| Amusement/Theme park || 2C01
+|-
+| Attraction || 2C00
+|-
+| Bank || 2F06
+|-
+| Bar || 4600
+|-
+| Beach || 6604
+|-
+| Bed & Breakfast inn || 2B02
+|-
+| Bench || 6605
+|-
+| Bowling || 2D07
+|-
+| Bridge|| 6401
+|-
+| Building || 6402
+|-
+| Bus station || 2F08
+|-
+| Camping || 4800
+|-
+| Camping/RV-Park || 2B03
+|-
+| Car Repair || 2F03
+|-
+| Cemetery || 6403
+|-
+| Casino || 2D04
+|-
+| Church || 6404
+|-
+| Cinema || 2D03
+|-
+| Civil || 6405
+|-
+| City (Capital) || 1
+|-
+| City (Large) || 2
+|-
+| City (Medium) || 5
+|-
+| City (Small) || 8
+|-
+| Cove || 6507
+|-
+| Crossing || 6406
+|-
+| Drinking Water || 5000
+|-
+| Elevation spot || 6300
+|-
+| Exit || 2000
+|-
+| Falls || 6508
+|-
+| Fast food || 2A07
+|-
+| First aid station || 4B00
+|-
+| Fishing spot || 4100
+|-
+| Forest || 660A
+|-
+| Fuel/Gas || 2F01
+|-
+| Geyser || 6509
+|-
+| Golf Course || 2D05
+|-
+| Ground transportation || 2F08
+|-
+| Harbor || 650B
+|-
+| Hospital || 3002
+|-
+| Hotel/Motel || 2B01
+|-
+| House || 6100
+|-
+| Ice skating || 2D08
+|-
+| Information || 4C00
+|-
+| Label || 2800
+|-
+| Landmark || 2C04
+|-
+| Library || 2C03
+|-
+| Lodging || 2B00
+|-
+| Marina || 2F09
+|-
+| Mile marker || 5A00
+|-
+| Mine || 640C
+|-
+| Museum || 2C02
+|-
+| Parking Area || 2F0B
+|-
+| Pharmacy || 2E05
+|-
+| Picnic area || 4A00
+|-
+| Place of Worship || 2C0B
+|-
+| Police Station || 3001	
+|-
+| Post office || 2F05
+|-
+| Mailbox || 640F
+|-
+| Rapids || 650E
+|-
+| Region name (no Point, big) || 1400
+|-
+| Region name (no Point, middle) || 1E00
+|-
+| Region name (no Point, small) || 2800
+|-
+| Restroom || 2F0C
+|-
+| Scenic area || 5200
+|-
+| School || 2C05
+|-
+| Shopping Center || 2E04
+|-
+| Shop || 2E01
+|-
+| Shower || 4F00
+|-
+| Stadium || 2C08
+|-
+| Summit || 6616
+|-
+| Swimming pool || 2D09
+|-
+| Telephone || 5100
+|-
+| Tower || 6411
+|-
+| Trailhead || 6412
+|-
+| Tunnel || 6413
+|-
+| Well || 6414
+|-
+| Winery || 2C0A
+|-
+| Zoo/Aquarium || 2C07
+|}
+
+=== Areas ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:250px" | Type Name
+! style="width:75px" | Type ID
+|-
+| Airport || 07
+|-
+| Airport runway || 0E
+|-
+| Blue-Unknown || 29
+|-
+| Cemetery || 1A
+|-
+| City || 01
+|-
+| City park || 17
+|-
+| Flat || 53
+|-
+| Glacier || 4D
+|-
+| Golf || 18
+|-
+| Hospital || 0B
+|-
+| Industrial || 0C
+|-
+| Intermittent River/Lake || 4C
+|-
+| Lake || 3C
+|-
+| Marina || 09
+|-
+| Military base || 04
+|-
+| Ocean || 28
+|-
+| Orchard || 4E
+|-
+| Parking || 05
+|-
+| River || 46
+|-
+| Scrub || 4F
+|-
+| Sea || 32
+|-
+| Shopping Center || 08
+|-
+| Small Lake || 41
+|-
+| Sports complex || 19
+|-
+| Tundra || 52
+|-
+| University || 0A
+|-
+| Wetland || 51
+|-
+| Woods || 50
+|}
+
+=== Lines ===
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0" 
+|- style="background-color:#F8F4C2"
+! style="width:250px" | Type Name
+! style="width:75px" | Type ID
+|-
+| Airport Runway || 27
+|-
+| Alley || 07
+|-
+| Arterial Road-medium || 04
+|-
+| Arterial Road-thick || 05
+|-
+| Boundary-continent|| 1d
+|-
+| Boundary-political|| 1c
+|-
+| Depth-contour-medium || 24
+|-
+| Depth-contour-thick || 25
+|-
+| Depth-contour-thin || 23
+|-
+| Ferry1 || 1a
+|-
+| Ferry2 || 1b
+|-
+| Intermittent-river || 26
+|-
+| Intl. Boundary || 1e
+|-
+| Land-contour-medium || 21
+|-
+| Land-contour-thick || 22
+|-
+| Land-contour-thin || 20
+|-
+| Major HWY Connector-thick || 0b
+|-
+| Major HWY thick || 01
+|-
+| Major Trail || 0f
+|-
+| Marine boundary || 2a
+|-
+| Marine hazard || 2b
+|-
+| Path || 16
+|-
+| Pedestrian Area || 0d
+|-
+| Pipeline || 28
+|-
+| Power line || 29
+|-
+| Principal HWY-medium || 03
+|-
+| Principal HWY-thick || 02
+|-
+| Railroad || 14
+|-
+| Ramp high-speed || 09
+|-
+| Ramp low-speed || 08
+|-
+| Residential || 06
+|-
+| River || 1f
+|-
+| Road || 00
+|-
+| Road-thin || 06
+|-
+| Roundabout || 0c
+|-
+| Shoreline || 15
+|-
+| Steep track || 13
+|-
+| Stream-thin || 18	
+|-
+| Time zone || 19	
+|-
+| Trail || 16
+|-
+| Unpaved Road-thin || 0a
+|}
+
+[[Category:GroundTruth Rules]]
