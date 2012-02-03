@@ -1,0 +1,53 @@
+﻿{{GroundTruthRenderingRules | description=for elevation contours (isohypses) in feet
+| version=1.3
+| changepolicy=}}
+
+== Contours Rendering Rules ==
+
+{| class="wikitable" border="1" cellspacing="0" cellpadding="0"
+|- style="background-color:#F8F4C2"
+! style="width:50px" | Elevation Multiple
+! style="width:20px" | Min Level
+! style="width:20px" | Max Level
+! style="width:200px" | Type Name
+! style="width:100px" | Show Elevation?
+! style="width:40px" | Colors
+! style="width:20px" | Width
+! style="width:20px" | Border Width
+! Pattern
+|-
+| 450
+| 22
+|
+| Land-contour-thick
+| yes
+| {{GroundTruthLineColor|#7F3300}}
+| 1
+|
+|
+|-
+| 150
+| 23
+|
+| Land-contour-medium
+| yes
+| {{GroundTruthLineColor|#9E3F00}}
+| 
+|
+| 11001100
+|-
+| 50
+| 24
+|
+| Land-contour-thin
+|
+| {{GroundTruthLineColor|#9E3F00}}
+| 
+|
+| 11001100
+|}
+
+[[Category:GroundTruth]]
+[[Category:GroundTruth Rules]]
+[[Category:Relief maps]]
+[[Category:Garmin]]

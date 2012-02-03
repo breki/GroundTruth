@@ -1,0 +1,3 @@
+﻿-cgp=..\..\..\..\lib\cgpsmapper
+-sendmapexe=..\..\..\..\lib\sendmap\sendmap20.exe
+
